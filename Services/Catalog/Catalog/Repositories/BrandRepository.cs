@@ -3,7 +3,7 @@ using MongoDB.Driver;
 
 namespace Catalog.Repositories
 {
-    public class BrandRepository : IBandRepository
+    public class BrandRepository : IBrandRepository
     {
         private readonly IMongoCollection<ProductBrand> _brands;
         public BrandRepository(IConfiguration config)

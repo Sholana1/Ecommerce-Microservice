@@ -1,4 +1,6 @@
-﻿using Catalog.Queries;
+﻿using Catalog.Extensions;
+using Catalog.Queries;
+using Catalog.Repositories;
 using Catalog.Responses;
 using MediatR;
 
@@ -6,9 +8,16 @@ namespace Catalog.Handlers
 {
     public class GetAllBrandsHandler : IRequestHandler<GetAllBrandsQuery, IList<BrandResponse>>
     {
-        public Task<IList<BrandResponse>> Handle(GetAllBrandsQuery request, CancellationToken cancellationToken)
+        private readonly IBrandRepository _brandRepository;
+
+        public GetAllBrandsHandler(IBrandRepository brandRepository)
         {
-            throw new NotImplementedException();
+            _brandRepository = brandRepository;
+        }
+        public async Task<IList<BrandResponse>> Handle(GetAllBrandsQuery request, CancellationToken cancellationToken)
+        {
+            var brandList = await _brandRepository.GetAllBrands();
+            return brandList.ToResponseList();
         }
     }
 }

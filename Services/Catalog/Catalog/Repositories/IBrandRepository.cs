@@ -2,7 +2,7 @@
 
 namespace Catalog.Repositories
 {
-    public interface IBandRepository
+    public interface IBrandRepository
     {
         Task<IEnumerable<ProductBrand>> GetAllBrands();
         Task<ProductBrand> GetByIdAsync(string id);

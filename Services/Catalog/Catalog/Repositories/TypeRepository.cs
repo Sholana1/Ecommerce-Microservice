@@ -14,7 +14,7 @@ namespace Catalog.Repositories
 
             
         }
-        public async Task<IEnumerable<ProductType>> GetAllType()
+        public async Task<IEnumerable<ProductType>> GetAllTypes()
         {
             return await _types.Find(_ => true).ToListAsync();
         }

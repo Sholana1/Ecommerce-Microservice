@@ -4,7 +4,7 @@ namespace Catalog.Repositories
 {
     public interface ITypeRepository
     {
-        Task<IEnumerable<ProductType>> GetAllType();
+        Task<IEnumerable<ProductType>> GetAllTypes();
         Task<ProductType> GetByIdAsync(string id);
     }
 }
