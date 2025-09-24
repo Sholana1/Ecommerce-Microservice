@@ -1,7 +1,9 @@
 ﻿using Catalog.Commands;
+using Catalog.DTOs;
 using Catalog.Entities;
 using Catalog.Responses;
 using Catalog.Specifications;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Catalog.Extensions
 {
@@ -9,6 +11,7 @@ namespace Catalog.Extensions
     {
         public static ProductResponse ToResponse(this Product product)
         {
+            if (product == null) return null;
             return new ProductResponse
             {
                 Id = product.Id,
@@ -19,6 +22,7 @@ namespace Catalog.Extensions
                 Price = product.Price,
                 Brand = product.Brand,
                 Type = product.Type,
+                CreateDate = product.CreateDate,
             };
         }
 
@@ -64,6 +68,40 @@ namespace Catalog.Extensions
                 Brand = brand,
                 Type = type,
                 CreateDate = DateTimeOffset.UtcNow,
+            };
+        }
+
+        public static ProductDto ToDto(this ProductResponse product)
+        {
+            if(product == null) return null;
+            return new ProductDto
+            (
+                product.Id,
+                product.Name,
+                product.Summary,
+                product.Description,
+                product.ImageFile,
+                product.Price,
+                new BrandDto(product.Brand.Id, product.Brand.Name),
+                new TypeDto(product.Type.Id, product.Type.Name),
+                DateTimeOffset.UtcNow
+            );
+        }
+
+        [HttpPut("{id}")]
+        public static UpdateProductCommand ToCommand(this UpdateProductDto dto, string id)
+        {
+            
+            return new UpdateProductCommand
+            {
+                Id = id,
+                Name = dto.Name,
+                Summary = dto.Summary,
+                Description = dto.Description,
+                ImageFile = dto.ImageFile,
+                Price = dto.Price,
+                BrandId = dto.BrandId,
+                TypeId = dto.TypeId
             };
         }
     }

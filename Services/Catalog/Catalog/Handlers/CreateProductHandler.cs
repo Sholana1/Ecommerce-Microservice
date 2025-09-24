@@ -6,11 +6,11 @@ using MediatR;
 
 namespace Catalog.Handlers
 {
-    public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, ProductResponse>
+    public class CreateProductHandler : IRequestHandler<CreateProductCommand, ProductResponse>
     {
         private readonly IProductRepository _productRepository;
 
-        public CreateProductCommandHandler(IProductRepository productRepository)
+        public CreateProductHandler(IProductRepository productRepository)
         {
             _productRepository = productRepository;
         }

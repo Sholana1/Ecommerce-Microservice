@@ -5,11 +5,11 @@ using MediatR;
 
 namespace Catalog.Handlers
 {
-    public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand, bool>
+    public class UpdateProductHandler : IRequestHandler<UpdateProductCommand, bool>
     {
         private readonly IProductRepository _productRepository;
 
-        public UpdateProductCommandHandler(IProductRepository productRepository)
+        public UpdateProductHandler(IProductRepository productRepository)
         {
             _productRepository = productRepository;
         }
