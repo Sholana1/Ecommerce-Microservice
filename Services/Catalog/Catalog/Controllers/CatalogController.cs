@@ -19,7 +19,7 @@ namespace Catalog.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet("GetAllProduucts")]
+        [HttpGet("GetAllProducts")]
         public async Task<ActionResult<IList<ProductDto>>> GetAllProducts([FromQuery] CatalogSpecParams catalogSpecParams)
         {
             var query = new GetAllProductQuery(catalogSpecParams);

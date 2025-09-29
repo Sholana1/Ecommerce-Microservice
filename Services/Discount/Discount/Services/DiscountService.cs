@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Discount.Services
 {
-    public class DiscountService : DiscountProtpService.DiscountProtpServiceBase
+    public class DiscountService : DiscountProtoService.DiscountProtoServiceBase
     {
         private readonly IMediator _mediator;
 
